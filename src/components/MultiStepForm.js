@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Region from "./Region";
 import Season from "./Season";
 import AirTemp from "./AirTemp";
+import CloudCover from "./CloudCover";
 import Submit from "./MultiStepSubmit";
 
 const MultiStepForm = () => {
@@ -9,7 +10,8 @@ const MultiStepForm = () => {
   const [formData, setFormData] = useState({
     region: "",
     season: "",
-    air_temp: ""
+    air_temp: "",
+    cloud_cover: ""
   });
 
   const handleChange = (event) => {
@@ -52,8 +54,16 @@ const MultiStepForm = () => {
         <AirTemp
           data={formData}
           handleChange={handleChange}
-          next={() => next({ step: "submit" })}
+          next={() => next({ step: "cloud_cover" })}
           back={(event) => back({ event: event, step: "season" })}
+        />
+      )}
+      {(currentStep === "cloud_cover" || formData["cloud_cover"]) && (
+        <CloudCover
+          data={formData}
+          handleChange={handleChange}
+          next={() => next({ step: "submit" })}
+          back={(event) => back({ event: event, step: "air_temp" })}
         />
       )}
       {currentStep === "submit" && (
