@@ -5,13 +5,14 @@ const Question = (props) => {
     data,
     fieldOptions,
     fieldKey,
-    fieldLabel,
+    question,
     handleChange,
     next,
     back
   } = props;
 
   const handleClick = (event) => {
+    event.preventDefault();
     handleChange(event);
     next();
   };
@@ -30,7 +31,7 @@ const Question = (props) => {
   return (
     <form>
       <p>
-        <label htmlFor={fieldKey}>{fieldLabel}:</label>
+        <label htmlFor={fieldKey}>{question}</label>
         <br />
         {buttons}
       </p>

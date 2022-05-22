@@ -4,7 +4,7 @@ import Question from "./Question";
 
 const Region = (props) => {
   const fieldKey = "region";
-  const fieldLabel = "Region";
+  const question = "What region are you in?";
 
   const fieldOptions = [
     { value: "northeast", label: "Northeast" },
@@ -25,7 +25,7 @@ const Region = (props) => {
       data={data}
       fieldOptions={fieldOptions}
       fieldKey={fieldKey}
-      fieldLabel={fieldLabel}
+      question={question}
       handleChange={handleChange}
       next={next}
       back={back}

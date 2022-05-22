@@ -1,10 +1,10 @@
 import React from "react";
 
-import AnswerButton from "./AnswerButton";
+import Question from "./Question";
 
 const Season = (props) => {
   const fieldKey = "season";
-  const fieldLabel = "Season";
+  const question = "What season are you in?";
 
   const fieldOptions = [
     { value: "spring", label: "Spring" },
@@ -15,31 +15,16 @@ const Season = (props) => {
 
   const { data, handleChange, next, back } = props;
 
-  const handleClick = (event) => {
-    handleChange(event);
-    next();
-  };
-
-  const buttons = Object.entries(fieldOptions).map(([key, value]) => (
-    <AnswerButton
-      key={key}
-      name={fieldKey}
-      value={value.value}
-      label={value.label}
-      currentValue={data[fieldKey]}
-      handleClick={handleClick}
-    />
-  ));
-
   return (
-    <form>
-      <p>
-        <label htmlFor={fieldKey}>{fieldLabel}:</label>
-        <br />
-        {buttons}
-      </p>
-      {back && <button onClick={back}>Back</button>}
-    </form>
+    <Question
+      data={data}
+      fieldOptions={fieldOptions}
+      fieldKey={fieldKey}
+      question={question}
+      handleChange={handleChange}
+      next={next}
+      back={back}
+    />
   );
 };
 export default Season;
