@@ -26,7 +26,8 @@ const MultiStepForm = () => {
     setCurrentStep(step);
     console.log("set currentStep to: " + step);
   };
-  const back = ({ step }) => {
+  const back = ({ event, step }) => {
+    event.preventDefault();
     console.log("back button clicked with step: " + step);
     setCurrentStep(step);
   };
@@ -44,7 +45,7 @@ const MultiStepForm = () => {
           data={formData}
           handleChange={handleChange}
           next={() => next({ step: "air_temp" })}
-          back={() => next({ step: "region" })}
+          back={(event) => back({ event: event, step: "region" })}
         />
       )}
       {(currentStep === "air_temp" || formData["air_temp"]) && (
@@ -52,11 +53,14 @@ const MultiStepForm = () => {
           data={formData}
           handleChange={handleChange}
           next={() => next({ step: "submit" })}
-          back={() => next({ step: "season" })}
+          back={(event) => back({ event: event, step: "season" })}
         />
       )}
       {currentStep === "submit" && (
-        <Submit data={formData} back={() => back({ step: "season" })} />
+        <Submit
+          data={formData}
+          back={(event) => back({ event: event, step: "season" })}
+        />
       )}
     </>
   );
