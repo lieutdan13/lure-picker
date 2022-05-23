@@ -4,6 +4,7 @@ import Season from "./Season";
 import AirTemp from "./AirTemp";
 import CloudCover from "./CloudCover";
 import WaterTemp from "./WaterTemp";
+import WaterClarity from "./WaterClarity";
 import Submit from "./MultiStepSubmit";
 
 const MultiStepForm = () => {
@@ -13,7 +14,8 @@ const MultiStepForm = () => {
     season: "",
     air_temp: "",
     cloud_cover: "",
-    water_temp: ""
+    water_temp: "",
+    water_clarity: ""
   });
 
   const handleChange = (event) => {
@@ -72,14 +74,22 @@ const MultiStepForm = () => {
         <WaterTemp
           data={formData}
           handleChange={handleChange}
-          next={() => next({ step: "submit" })}
+          next={() => next({ step: "water_clarity" })}
           back={(event) => back({ event: event, step: "cloud_cover" })}
+        />
+      )}
+      {(currentStep === "water_clarity" || formData["water_clarity"]) && (
+        <WaterClarity
+          data={formData}
+          handleChange={handleChange}
+          next={() => next({ step: "submit" })}
+          back={(event) => back({ event: event, step: "water_temp" })}
         />
       )}
       {currentStep === "submit" && (
         <Submit
           data={formData}
-          back={(event) => back({ event: event, step: "season" })}
+          back={(event) => back({ event: event, step: "water_clarity" })}
         />
       )}
     </>
