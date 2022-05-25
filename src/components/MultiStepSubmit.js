@@ -8,6 +8,7 @@ const Submit = (props) => {
   ));
   return (
     <div>
+      <b>State</b>
       <ul>{listItems}</ul>
       <button onClick={back}>Back</button>
       <button type="submit">Submit</button>
