@@ -7,9 +7,9 @@ import WaterTemp from "./WaterTemp";
 import WaterClarity from "./WaterClarity";
 import WaterSpeed from "./WaterSpeed";
 import Submit from "./MultiStepSubmit";
+import LureList from "./LureList";
 
 const MultiStepForm = () => {
-  const [currentStep, setCurrentStep] = useState("region");
   const [formData, setFormData] = useState({
     region: "",
     season: "",
@@ -20,14 +20,15 @@ const MultiStepForm = () => {
     water_speed: ""
   });
   const components = [
-    [Region, "region"],
     [Season, "season"],
-    [AirTemp, "air_temp"],
-    [CloudCover, "cloud_cover"],
     [WaterTemp, "water_temp"],
-    [WaterClarity, "water_clarity"],
-    [WaterSpeed, "water_speed"]
+    [WaterClarity, "water_clarity"]
+    // [Region, "region"],
+    // [AirTemp, "air_temp"],
+    // [CloudCover, "cloud_cover"],
+    // [WaterSpeed, "water_speed"]
   ];
+  const [currentStep, setCurrentStep] = useState(components[0][1]);
   const submitBackStep = components[components.length - 1][1];
 
   const handleChange = (event) => {
@@ -73,6 +74,7 @@ const MultiStepForm = () => {
   return (
     <>
       {questions}
+      <LureList filters={formData} />
       {currentStep === "submit" && (
         <Submit
           data={formData}

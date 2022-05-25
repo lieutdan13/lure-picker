@@ -8,6 +8,7 @@ const Season = (props) => {
 
   const fieldOptions = [
     { value: "spring", label: "Spring" },
+    { value: "spawn", label: "Spawn" },
     { value: "summer", label: "Summer" },
     { value: "autumn", label: "Autumn" },
     { value: "winter", label: "Winter" }
