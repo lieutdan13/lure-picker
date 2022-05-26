@@ -12,3 +12,14 @@
   background-color: blue;
   color: white;
 }
+
+table.lure-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.lure-list th,
+table.lure-list td {
+  text-align: left;
+  border: 1px solid black;
+}

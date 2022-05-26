@@ -19,10 +19,10 @@ const LureList = (props) => {
   });
 
   return (
-    <table>
+    <table className="lure-list">
       <thead>
         <tr>
-          <th>Lure</th>
+          <th>Lure Type</th>
           <th>Colors</th>
         </tr>
       </thead>
